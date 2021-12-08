@@ -95,7 +95,7 @@ var startGame = function() {
             var pickedEnemyName = enemyNames[i];
 
             // reset enemyHealth before starting new fight
-            enemyHealth = randomNumber();
+            enemyHealth = randomNumber(40, 60);
 
             // use debugger to pause script from running and check what's going on at that moment in the code
             // debugger;
@@ -127,7 +127,7 @@ var startGame = function() {
 
 // function to end the entire game
 var endGame = function() {
-    window.alert("The game has now ended. Let's see how you di!");
+    window.alert("The game has now ended. Let's see how you did!");
     
     // if player is still alive, player wins!
     if (playerHealth > 0) {
