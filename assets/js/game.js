@@ -4,8 +4,16 @@
 //      * Defeat each enemy-robot
 // "LOSE" - Player robot's health is zero or less
     
-// fight function (now with psrameter for enemy's name)
+// fight function (now with parameter for enemy's name)
 
+// function to generate a random numeric value
+var randomNumber = function(min, max) {
+    var value = Math.floor(Math.random() * (max - min + 1) + min);
+
+    return value;
+};
+
+// fight function (now with parameter for enemy's object holding name, health and attack values)
 var fight = function(enemy) { 
     // repeat and execute as long as the enemy-robot is alive
     while(playerInfo.health > 0 && enemy.health > 0) {
@@ -52,6 +60,7 @@ var fight = function(enemy) {
         var damage = randomNumber(enemy.attack - 3, enemy.attack);
         
         playerInfo.health = Math.max(0, playerInfo.health - damage);    
+
         console.log(
             enemy.name + " attacked " + playerInfo.name + ". " + playerInfo.name + " now has " + playerInfo.health + " health remaining."
         );
@@ -170,15 +179,32 @@ var shop = function() {
         }
 };
 
-// function to generate a random numeric value
-var randomNumber = function(min, max) {
-    var value = Math.floor(Math.random() * (max - min + 1) + min);
+/*END GAME FUNCTIONS */
 
-    return value;
-};
+/* GAME INFORMATION / VARIABLES */
+
+// function to set name
+
+var getPlayerName = function() {
+    var name = "";
+
+    // don't accept invalid date, such as blank or null
+    for(var i = 0; i < getPlayerName; i++) {
+        if (getPlayerName === name || getPlayerName === null) {
+            window.alert("Please enter your robot's name");
+        }
+            console.log("Your robot's name is " + name);
+            return name;
+        }
+        while (name === "" || name === null) {
+            name = prompt("What is your robot's name?");
+        };
+    };
+
+// PLAYER INFORMATION
 
 var playerInfo = {
-    name: window.prompt("What is your robot's name?"),
+    name: getPlayerName(),
     health: 100,
     attack: 10,
     money: 10,
@@ -187,7 +213,7 @@ var playerInfo = {
         this.money = 10;
         this.attack = 10;
     },
-    refillHealth: function(){
+    refillHealth: function() {
         if (this.money >= 7) {
             window.alert("Refilling player's health by 20 for 7 dollars.");
             this.health += 20;
@@ -209,6 +235,7 @@ var playerInfo = {
     }
 };
 
+//ENEMY INFORMATION
 var enemyInfo = [
     {
         name: "Roborto",
@@ -224,5 +251,7 @@ var enemyInfo = [
      }
 ];
 
-// start the game when the page loads
+/* END GAME INFORMATION / VARIABLES */
+
+/* RUN GAME */
 startGame();
